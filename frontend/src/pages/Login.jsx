@@ -54,35 +54,40 @@ export default function Login(){
   return (
     <div className={"modern-page " + ("container" + (active ? ' active' : ''))} id="container">
       <div className="form-container sign-up">
-        <form onSubmit={handleRegister}>
-          <h1>Create Account</h1>
-          <div className="social-icons">
-            <a href="#" className="icon"><i className="fa-brands fa-google-plus-g"></i></a>
-            <a href="#" className="icon"><i className="fa-brands fa-facebook-f"></i></a>
-            <a href="#" className="icon"><i className="fa-brands fa-github"></i></a>
-            <a href="#" className="icon"><i className="fa-brands fa-linkedin-in"></i></a>
+        <form onSubmit={handleRegister} aria-labelledby="su-heading">
+          <h1 id="su-heading">Create Account</h1>
+          <div className="social-icons" role="navigation" aria-label="social sign in">
+            <a href="#" className="icon" aria-label="Sign up with Google"><i className="fa-brands fa-google-plus-g" aria-hidden="true"></i></a>
+            <a href="#" className="icon" aria-label="Sign up with Facebook"><i className="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" className="icon" aria-label="Sign up with GitHub"><i className="fa-brands fa-github" aria-hidden="true"></i></a>
+            <a href="#" className="icon" aria-label="Sign up with LinkedIn"><i className="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
           </div>
-          <span>or use your email for registeration</span>
-          <input value={suName} onChange={e=>setSuName(e.target.value)} type="text" placeholder="Name" />
-          <input value={suEmail} onChange={e=>setSuEmail(e.target.value)} type="email" placeholder="Email" />
-          <input value={suPassword} onChange={e=>setSuPassword(e.target.value)} type="password" placeholder="Password" />
-          <button disabled={loading}>{loading ? 'Please wait...' : 'Sign Up'}</button>
+          <span>or use your email for registration</span>
+          <label className="sr-only" htmlFor="su-name">Name</label>
+          <input id="su-name" name="name" aria-required="true" value={suName} onChange={e=>setSuName(e.target.value)} type="text" placeholder="Name" />
+          <label className="sr-only" htmlFor="su-email">Email</label>
+          <input id="su-email" name="email" aria-required="true" value={suEmail} onChange={e=>setSuEmail(e.target.value)} type="email" placeholder="Email" />
+          <label className="sr-only" htmlFor="su-password">Password</label>
+          <input id="su-password" name="password" aria-required="true" value={suPassword} onChange={e=>setSuPassword(e.target.value)} type="password" placeholder="Password" />
+          <button type="submit" disabled={loading} aria-disabled={loading}>{loading ? 'Please wait...' : 'Sign Up'}</button>
         </form>
       </div>
       <div className="form-container sign-in">
-        <form onSubmit={handleLogin}>
-          <h1>Log In</h1>
-          <div className="social-icons">
-            <a href="#" className="icon"><i className="fa-brands fa-google-plus-g"></i></a>
-            <a href="#" className="icon"><i className="fa-brands fa-facebook-f"></i></a>
-            <a href="#" className="icon"><i className="fa-brands fa-github"></i></a>
-            <a href="#" className="icon"><i className="fa-brands fa-linkedin-in"></i></a>
+        <form onSubmit={handleLogin} aria-labelledby="li-heading">
+          <h1 id="li-heading">Log In</h1>
+          <div className="social-icons" role="navigation" aria-label="social sign in">
+            <a href="#" className="icon" aria-label="Sign in with Google"><i className="fa-brands fa-google-plus-g" aria-hidden="true"></i></a>
+            <a href="#" className="icon" aria-label="Sign in with Facebook"><i className="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" className="icon" aria-label="Sign in with GitHub"><i className="fa-brands fa-github" aria-hidden="true"></i></a>
+            <a href="#" className="icon" aria-label="Sign in with LinkedIn"><i className="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
           </div>
           <span>or use your email password</span>
-          <input value={liEmail} onChange={e=>setLiEmail(e.target.value)} type="email" placeholder="Email" />
-          <input value={liPassword} onChange={e=>setLiPassword(e.target.value)} type="password" placeholder="Password" />
-          <a href="#">Forget Your Password?</a>
-          <button disabled={loading}>{loading ? 'Please wait...' : 'LOG In'}</button>
+          <label className="sr-only" htmlFor="li-email">Email</label>
+          <input id="li-email" name="email" aria-required="true" value={liEmail} onChange={e=>setLiEmail(e.target.value)} type="email" placeholder="Email" />
+          <label className="sr-only" htmlFor="li-password">Password</label>
+          <input id="li-password" name="password" aria-required="true" value={liPassword} onChange={e=>setLiPassword(e.target.value)} type="password" placeholder="Password" />
+          <a href="#" aria-label="Forgot your password">Forget Your Password?</a>
+          <button type="submit" disabled={loading} aria-disabled={loading}>{loading ? 'Please wait...' : 'LOG In'}</button>
         </form>
       </div>
       <div className="toggle-container">
@@ -90,12 +95,12 @@ export default function Login(){
           <div className="toggle-panel toggle-left">
             <h1>Welcome Back!</h1>
             <p>Enter your personal details to use all of site features</p>
-            <button className="hidden" id="login" onClick={()=>setActive(false)}>Sign In</button>
+            <button type="button" className="hidden" id="login" onClick={()=>setActive(false)} aria-pressed={!active}>Sign In</button>
           </div>
           <div className="toggle-panel toggle-right">
             <h1>Hello, Friend!</h1>
             <p>Register with your personal details to use all of site features</p>
-            <button className="hidden" id="register" onClick={()=>setActive(true)}>Sign Up</button>
+            <button type="button" className="hidden" id="register" onClick={()=>setActive(true)} aria-pressed={active}>Sign Up</button>
           </div>
         </div>
       </div>
