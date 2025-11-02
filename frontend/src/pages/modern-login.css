@@ -97,6 +97,11 @@ body{
     border-radius: 8px;
     width: 100%;
     outline: none;
+    color: #000; /* ensure typed text is black, overrides global inherited color */
+}
+
+.container input::placeholder{
+    color: #6b6b6b; /* muted placeholder for better contrast */
 }
 
 .form-container{
