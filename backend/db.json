@@ -1,20 +1,94 @@
 {
   "users": [
-    {"id": "u1", "name": "Arjun", "password": "password", "wallet": 270, "isAdmin": false},
-    {"id": "u_admin", "name": "admin", "password": "adminpass", "wallet": 0, "isAdmin": true}
+    {
+      "id": "u1",
+      "name": "Arjun",
+      "password": "password",
+      "wallet": 270,
+      "isAdmin": false
+    },
+    {
+      "id": "u_admin",
+      "name": "admin",
+      "password": "adminpass",
+      "wallet": 0,
+      "isAdmin": true
+    },
+    {
+      "id": "u1762090618156",
+      "name": "Monojit",
+      "password": "Monojit#2025",
+      "wallet": 0,
+      "isAdmin": false
+    }
   ],
   "tournaments": [
-    {"id": "t1", "game": "Free Fire", "time": "7:00 PM", "entryFee": 10, "slots": 50, "joined": 38, "prizePool": 400},
-    {"id": "t2", "game": "BGMI", "time": "8:30 PM", "entryFee": 16, "slots": 100, "joined": 24, "prizePool": 1200}
-    ,{"id":"t3","game":"Free Fire","time":"9:00 PM","entryFee":49,"slots":50,"joined":0,"prizePool":2450}
+    {
+      "id": "t1",
+      "game": "Free Fire",
+      "time": "7:00 PM",
+      "entryFee": 10,
+      "slots": 50,
+      "joined": 38,
+      "prizePool": 400
+    },
+    {
+      "id": "t2",
+      "game": "BGMI",
+      "time": "8:30 PM",
+      "entryFee": 16,
+      "slots": 100,
+      "joined": 24,
+      "prizePool": 1200
+    },
+    {
+      "id": "t3",
+      "game": "Free Fire",
+      "time": "9:00 PM",
+      "entryFee": 49,
+      "slots": 50,
+      "joined": 0,
+      "prizePool": 2450
+    }
   ],
   "transactions": [
-    {"id": "tr1","userId":"u1","type":"credit","amount":20,"note":"Added (UPI)","date":"2025-10-28"},
-    {"id": "tr2","userId":"u1","type":"debit","amount":10,"note":"Tournament Joined","date":"2025-10-29"}
+    {
+      "id": "tr1",
+      "userId": "u1",
+      "type": "credit",
+      "amount": 20,
+      "note": "Added (UPI)",
+      "date": "2025-10-28"
+    },
+    {
+      "id": "tr2",
+      "userId": "u1",
+      "type": "debit",
+      "amount": 10,
+      "note": "Tournament Joined",
+      "date": "2025-10-29"
+    }
   ],
-  "sessions": [],
+  "sessions": [
+    {
+      "token": "a7eacdd231de88eb90eeb14954cfbc6d4353e7e9797d0a63",
+      "userId": "u1762090618156"
+    }
+  ],
   "leaderboard": [
-    {"rank":1,"player":"Arjun FF","matches":62,"wins":19,"earnings":1870},
-    {"rank":2,"player":"GamerBoy","matches":51,"wins":15,"earnings":1420}
+    {
+      "rank": 1,
+      "player": "Arjun FF",
+      "matches": 62,
+      "wins": 19,
+      "earnings": 1870
+    },
+    {
+      "rank": 2,
+      "player": "GamerBoy",
+      "matches": 51,
+      "wins": 15,
+      "earnings": 1420
+    }
   ]
 }
