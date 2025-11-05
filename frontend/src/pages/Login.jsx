@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAuth } from '../auth'
+import { useLocation } from 'react-router-dom'
 import './modern-login.css'
 
 export default function Login(){
@@ -35,8 +36,11 @@ export default function Login(){
     e.preventDefault(); setError(null); setLoading(true)
     try{
       // your backend signup expects (name, password)
-      await signup(suName || suEmail, suPassword)
-      window.location.href = '/'
+      const registered = await signup(suName || suEmail, suPassword)
+      // redirect to next if provided
+      const params = new URLSearchParams(window.location.search)
+      const next = params.get('next') || '/'
+      window.location.href = next
     }catch(err){ setError(err.response?.data?.error || err.message || 'Signup failed') }
     finally{ setLoading(false) }
   }
@@ -46,10 +50,20 @@ export default function Login(){
     try{
       // login expects name; use email field if name is not available
       await login(liEmail, liPassword)
-      window.location.href = '/'
+      const params = new URLSearchParams(window.location.search)
+      const next = params.get('next') || '/'
+      window.location.href = next
     }catch(err){ setError(err.response?.data?.error || err.message || 'Login failed') }
     finally{ setLoading(false) }
   }
+
+  // read query params to determine if the signup panel should be active and for next redirect
+  const location = useLocation()
+  React.useEffect(()=>{
+    const p = new URLSearchParams(location.search)
+    const mode = p.get('mode')
+    if(mode === 'signup') setActive(true)
+  },[location.search])
 
   return (
     <div className={"modern-page " + ("container" + (active ? ' active' : ''))} id="container">

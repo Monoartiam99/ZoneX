@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Tournaments from './pages/Tournaments'
 import Tournament from './pages/Tournament'
-import Wallet from './pages/Wallet'
 import Leaderboard from './pages/Leaderboard'
 import Admin from './pages/Admin'
 import Login from './pages/Login'
@@ -16,11 +15,12 @@ function App(){
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login/>} />
-        <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>} />
-        <Route path="/tournaments" element={<PrivateRoute><Tournaments/></PrivateRoute>} />
-        <Route path="/tournament/:id" element={<PrivateRoute><Tournament/></PrivateRoute>} />
-        <Route path="/wallet" element={<PrivateRoute><Wallet/></PrivateRoute>} />
-        <Route path="/leaderboard" element={<PrivateRoute><Leaderboard/></PrivateRoute>} />
+        {/* Public pages: Home, Tournaments, Tournament details, Leaderboard */}
+        <Route path="/" element={<Home/>} />
+        <Route path="/tournaments" element={<Tournaments/>} />
+        <Route path="/tournament/:id" element={<Tournament/>} />
+        <Route path="/leaderboard" element={<Leaderboard/>} />
+        {/* Admin stays protected */}
         <Route path="/admin" element={<PrivateRoute><Admin/></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
