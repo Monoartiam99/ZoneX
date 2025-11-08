@@ -1,0 +1,281 @@
+:root {
+  --bg:#0c0913;
+  --card:#15101e;
+  --primary:#7f5bff;
+  --primary-glow:#b299ff;
+  --text:#ffffff;
+}
+
+/* GLOBAL */
+body {
+  margin:0;
+  font-family:Inter,Segoe UI,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* SMOOTH TRANSITIONS */
+* {
+  transition:0.25s ease;
+}
+
+/* NAVBAR */
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  z-index: 1000;
+}
+
+.navbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 50px;
+}
+
+.glass-nav {
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+  font-size:24px;
+  font-weight:700;
+  color:var(--primary);
+  letter-spacing:1px;
+}
+
+/* NAV LINKS */
+nav a {
+  margin:0 16px;
+  color:#d9d6ff;
+  text-decoration:none;
+  font-weight:500;
+  position:relative;
+  padding-bottom:4px;
+}
+
+nav a::after {
+  content:"";
+  position:absolute;
+  bottom:-3px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:var(--primary);
+  transition:0.3s;
+  border-radius:4px;
+}
+
+nav a:hover::after {
+  width:100%;
+  box-shadow:0 0 12px var(--primary);
+}
+
+/* BUTTONS */
+.btn {
+  padding:10px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  border:none;
+  font-size:15px;
+  font-weight:600;
+  color:white;
+  text-decoration:none;
+}
+
+.btn.violet {
+  background:linear-gradient(135deg, #6a48ff, #8f70ff);
+  box-shadow:0 0 14px rgba(127, 91, 255, 0.6);
+}
+
+.btn.violet:hover {
+  box-shadow:0 0 22px rgba(178,153,255,1);
+  transform:translateY(-2px);
+}
+
+.btn.outline {
+  border:1px solid var(--primary);
+  background:transparent;
+}
+
+.btn.outline:hover {
+  background:var(--primary);
+  box-shadow:0 0 14px rgba(127, 91, 255, 0.7);
+}
+
+/* HERO BACKGROUND GLOW */
+.hero-section::before {
+  content:"";
+  position:absolute;
+  top:-350px;
+  left:50%;
+  transform:translateX(-50%);
+  width:1200px;
+  height:1200px;
+  background:radial-gradient(circle, rgba(127,91,255,0.25), transparent 70%);
+  filter:blur(140px);
+  z-index:-1;
+}
+
+/* HERO SECTION */
+.hero-section {
+  text-align:center;
+  padding:220px 20px 130px;
+  position:relative;
+}
+
+.hero-section h1 {
+  font-size:52px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.hero-section p {
+  font-size:19px;
+  opacity:0.85;
+  max-width:650px;
+  margin:14px auto 34px;
+}
+
+/* TOURNAMENT SECTION */
+.tournament-section {
+  padding:60px 30px;
+}
+
+.tournament-section h2 {
+  text-align:center;
+  font-size:32px;
+  margin-bottom:30px;
+  font-weight:700;
+}
+
+/* GRID */
+.tournament-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:26px;
+}
+
+/* TOURNAMENT CARD */
+.tournament-card {
+  background:var(--card);
+  border-radius:14px;
+  padding:20px;
+  border:1px solid rgba(255,255,255,0.06);
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 0 14px rgba(0,0,0,0.45);
+}
+
+.tournament-card:hover {
+  transform:translateY(-6px);
+  border-color:var(--primary);
+  box-shadow:0 0 18px rgba(127,91,255,0.4);
+}
+
+/* Glow highlight border */
+.tournament-card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(127,91,255,0.25), transparent);
+  opacity:0;
+  transition:0.3s;
+}
+
+.tournament-card:hover::before {
+  opacity:1;
+}
+
+/* CTA area inside card */
+.actions {
+  margin-top:18px;
+  text-align:center;
+}
+
+
+
+/*TOURNAMENTS.JSX STYLES*/
+
+/* TOURNAMENT PAGE */
+.tournament-page {
+  padding:140px 40px 80px;
+  text-align:center;
+}
+
+.page-heading {
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:6px;
+}
+
+.page-subtext {
+  opacity:0.75;
+  font-size:18px;
+  margin-bottom:40px;
+}
+
+/* GRID */
+.tournament-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+  width:100%;
+  max-width:1250px;
+  margin:0 auto;
+}
+
+/* CARD */
+.tournament-card {
+  background:var(--card);
+  border-radius:18px;
+  padding:22px;
+  text-align:left;
+  transition:0.35s;
+  box-shadow:0 0 14px rgba(0,0,0,0.35);
+}
+
+.tournament-card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 0 28px rgba(126,94,255,0.35);
+}
+
+.tournament-card h3 {
+  margin:0 0 4px;
+  font-size:22px;
+  font-weight:700;
+}
+
+.t-meta {
+  font-size:14px;
+  opacity:0.75;
+  margin-bottom:14px;
+}
+
+/* TEXT LINES */
+.info-line {
+  font-size:15px;
+  margin:6px 0;
+  opacity:0.85;
+}
+
+.info-line span {
+  opacity:1;
+  font-weight:600;
+  color:var(--primary-glow);
+}
+
+/* ACTION BUTTON AREA */
+.actions {
+  margin-top:18px;
+}
+
+
+
+/*Home page background image*/
+
