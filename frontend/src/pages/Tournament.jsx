@@ -1,30 +1,63 @@
 import React from 'react'
-import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../auth'
 
-export default function Tournament(){
-  const {id} = useParams()
-  const [t,setT] = React.useState(null)
+export default function Tournaments(){
+  const [tournaments, setTournaments] = React.useState([])
   const { user } = useAuth()
-  React.useEffect(()=>{ axios.get(`http://localhost:4000/api/tournaments/${id}`).then(r=>setT(r.data)).catch(()=>{}) },[id])
-  if(!t) return <div className="container">Loading...</div>
+
+  React.useEffect(()=>{
+    axios.get('http://localhost:4000/api/tournaments')
+      .then(r => setTournaments(r.data))
+      .catch(()=>{})
+  },[])
+
   return (
-    <div className="container">
-      <h1>{t.game} — Squad Match</h1>
-      <p><strong>Date:</strong> 29 Oct | {t.time}</p>
-      <p><strong>Map:</strong> Bermuda</p>
-      <p><strong>Entry Fee:</strong> ₹{t.entryFee}</p>
-      <p><strong>Prize Pool:</strong> ₹{t.prizePool} (Top 30 winners)</p>
-      <p><strong>Slots:</strong> {t.slots} Players ({t.joined} Joined)</p>
-      {user ? (
-        <button className="btn primary">Pay & Join</button>
-      ) : (
-        <div style={{display:'flex',gap:8}}>
-          <Link to={`/login?next=/tournament/${id}`} className="btn primary">Sign In</Link>
-          <Link to={`/login?next=/tournament/${id}&mode=signup`} className="btn">Sign Up</Link>
-        </div>
-      )}
+    <div className="tournament-page">
+      
+      {/* PAGE TITLE */}
+      <h1 className="page-heading">Tournaments</h1>
+      <p className="page-subtext">Join daily competitive tournaments and win exciting rewards</p>
+
+      {/* GRID */}
+      <div className="tournament-grid">
+        {tournaments.map(t => (
+          <div className="tournament-card" key={t.id}>
+            
+            {/* CARD HEADER */}
+            <h3>{t.game}</h3>
+            <div className="t-meta">
+              {t.mode || "Squad Match"} • {t.time}
+            </div>
+
+            {/* INFO */}
+            <div className="info-line">Entry Fee: <span>₹{t.entryFee}</span></div>
+            <div className="info-line">Prize Pool: <span>₹{t.prizePool}</span></div>
+            <div className="info-line">Slots: <span>{t.joined}/{t.slots}</span></div>
+
+            {/* ACTIONS */}
+            <div className="actions">
+              {user ? (
+                <Link to={`/tournament/${t.id}`} className="btn small violet">
+                  Join Tournament
+                </Link>
+              ) : (
+                <>
+                  <Link to={`/login?next=/tournament/${t.id}`} className="btn small violet">
+                    Sign In
+                  </Link>
+                  <Link to={`/register?next=/tournament/${t.id}`} className="btn small outline" style={{marginLeft:8}}>
+                    Sign Up
+                  </Link>
+                </>
+              )}
+            </div>
+
+          </div>
+        ))}
+      </div>
+
     </div>
   )
 }
