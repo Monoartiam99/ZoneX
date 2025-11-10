@@ -44,7 +44,8 @@ export function PrivateRoute({children}){
   const {user,loading} = useAuth()
   if(loading) return React.createElement('div',{style:{padding:20}}, 'Loading...')
   if(!user) {
-    window.location.href = '/login'
+    // open homepage so user can sign in via modal
+    window.location.href = '/'
     return null
   }
   return children

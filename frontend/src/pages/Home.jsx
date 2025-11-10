@@ -2,10 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useAuth } from '../auth'
+import AuthModal from '../components/AuthModal'
 
 export default function Home() {
   const [tournaments, setTournaments] = React.useState([])
   const { user, logout } = useAuth()
+  const [authOpen, setAuthOpen] = React.useState(false)
+  const [authMode, setAuthMode] = React.useState('login')
+  const [authNext, setAuthNext] = React.useState('/')
 
   React.useEffect(() => {
     axios.get('http://localhost:4000/api/tournaments')
@@ -34,8 +38,8 @@ export default function Home() {
             </>
               ) : (
                 <>
-                    <Link className="btn violet small" to="/">Login</Link>
-                    <Link className="btn outline small" to="/" style={{marginLeft:6}}>Register</Link>
+                    <button className="btn violet small" onClick={()=>{ setAuthMode('login'); setAuthNext('/'); setAuthOpen(true) }}>Login</button>
+                    <button className="btn outline small" style={{marginLeft:6}} onClick={()=>{ setAuthMode('signup'); setAuthNext('/'); setAuthOpen(true) }}>Register</button>
                   </>
                 )}
         </div>
@@ -61,8 +65,8 @@ export default function Home() {
                   <Link className="btn small violet" to={`/tournament/${t.id}`}>Join</Link>
                 ) : (
                   <>
-                    <Link className="btn small" to={`/login?next=/tournament/${t.id}`}>Sign In</Link>
-                    <Link className="btn small outline" to={`/register?next=/tournament/${t.id}`}>Sign Up</Link>
+                    <button className="btn small" onClick={()=>{ setAuthMode('login'); setAuthNext(`/tournament/${t.id}`); setAuthOpen(true) }}>Sign In</button>
+                    <button className="btn small outline" onClick={()=>{ setAuthMode('signup'); setAuthNext(`/tournament/${t.id}`); setAuthOpen(true) }}>Sign Up</button>
                   </>
                 )}
               </div>
@@ -70,6 +74,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <AuthModal open={authOpen} mode={authMode} next={authNext} onClose={()=>setAuthOpen(false)} />
 
     </div>
   )

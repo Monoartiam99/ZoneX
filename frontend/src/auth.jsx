@@ -44,7 +44,8 @@ export function PrivateRoute({children}){
   const {user,loading} = useAuth()
   if(loading) return <div style={{padding:20}}>Loading...</div>
   if(!user) {
-    window.location.href = '/login'
+    // redirect to homepage so modal-based auth can be used
+    window.location.href = '/'
     return null
   }
   return children
