@@ -86,6 +86,10 @@ export default function AuthModal({open, mode='login', next='/', onClose}){
             <p>Already have an account? <button className="linkish" onClick={()=>setM('login')}>Sign in</button></p>
           )}
         </div>
+        {/* progress bar: shows while loading */}
+        <div className={`auth-progress ${loading ? 'active' : ''}`} aria-hidden={!loading}>
+          <div className="auth-progress-bar" />
+        </div>
       </div>
     </div>
   )

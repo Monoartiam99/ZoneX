@@ -392,3 +392,29 @@ nav a:hover::after {
   .auth-panel{width:min(640px, 94%);padding:22px}
   .auth-panel h2{font-size:28px}
 }
+
+/* small progress bar displayed at the bottom of the auth panel during submit */
+.auth-progress{
+  height:6px;
+  margin-top:12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.06);
+  overflow:hidden;
+}
+.auth-progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ffd24d,#ffcf3f,#ffd24d);
+  background-size:200% 100%;
+  transform:translateX(-100%);
+}
+.auth-progress.active .auth-progress-bar{
+  width:100%;
+  transform:translateX(0);
+  animation: authProgressMove 1.4s linear infinite;
+}
+
+@keyframes authProgressMove{
+  0%{background-position:0% 0%;}
+  100%{background-position:200% 0%;}
+}
