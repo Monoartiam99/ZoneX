@@ -6,7 +6,6 @@ import Tournaments from './pages/Tournaments'
 import Tournament from './pages/Tournament'
 import Leaderboard from './pages/Leaderboard'
 import Admin from './pages/Admin'
-import Login from './pages/Login'
 import './styles.css'
 import { AuthProvider, PrivateRoute } from './auth'
 
@@ -14,7 +13,6 @@ function App(){
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login/>} />
         {/* Public pages: Home, Tournaments, Tournament details, Leaderboard */}
         <Route path="/" element={<Home/>} />
         <Route path="/tournaments" element={<Tournaments/>} />

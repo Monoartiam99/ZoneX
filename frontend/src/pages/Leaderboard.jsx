@@ -12,8 +12,8 @@ export default function Leaderboard(){
       <h1>Leaderboard</h1>
       {!user && (
         <div style={{display:'flex',gap:8,marginBottom:16}}>
-          <Link to={`/login?next=/leaderboard`} className="btn primary">Sign In</Link>
-          <Link to={`/login?next=/leaderboard&mode=signup`} className="btn">Sign Up</Link>
+          <Link to={`/`} className="btn primary">Sign In</Link>
+          <Link to={`/`} className="btn">Sign Up</Link>
         </div>
       )}
       <table className="leaderboard"><thead><tr><th>Rank</th><th>Player</th><th>Matches</th><th>Wins</th><th>Earnings</th></tr></thead>

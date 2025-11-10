@@ -17,7 +17,7 @@ export default function Home() {
     <div className="homepage">
 
       <header className="navbar glass-nav fixed-top">
-        <div className="logo">HostedGames</div>
+        <div className="logo">ValorX</div>
 
         <nav>
           <Link to="/">Home</Link>
@@ -32,12 +32,12 @@ export default function Home() {
               <Link className="btn violet small" to="/profile">Profile</Link>
               <button className="btn outline small" onClick={logout}>Logout</button>
             </>
-          ) : (
-            <>
-              <Link className="btn violet small" to="/login">Login</Link>
-              <Link className="btn outline small" to="/login">Register</Link>
-            </>
-          )}
+              ) : (
+                <>
+                    <Link className="btn violet small" to="/">Login</Link>
+                    <Link className="btn outline small" to="/" style={{marginLeft:6}}>Register</Link>
+                  </>
+                )}
         </div>
       </header>
 

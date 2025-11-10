@@ -278,3 +278,53 @@ nav a:hover::after {
 
 
 /* Home page background image */
+
+/* Use `vlx.jpg` as a decorative background for the homepage.
+   Place the file at `frontend/public/assets/vlx.jpg` so Vite serves it at `/assets/vlx.jpg`.
+   A semi-transparent gradient overlay ensures text remains readable. */
+.homepage {
+  /* try JPG first, then fallback to an inline SVG placed in public/assets */
+  background-image: linear-gradient(rgba(3,2,8,0.55), rgba(3,2,8,0.55)), url('/assets/vlx.png'), url('/assets/vlx.png');
+  background-size: cover, cover, cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 900px) {
+  .navbar {
+    padding:12px 18px;
+    gap:12px;
+    align-items:center;
+  }
+  .navbar nav {
+    display: none; /* simplified: hide full nav on narrow screens */
+  }
+  .logo { font-size:20px }
+  .auth { display:flex; gap:8px }
+
+  .hero-section {
+    padding:140px 14px 70px;
+  }
+  .hero-section h1 { font-size:34px }
+  .hero-section p { font-size:16px; max-width:100%; margin:10px auto 24px }
+
+  .tournament-section { padding:28px 12px }
+  .tournament-grid { gap:14px }
+  .tournament-card { padding:14px }
+
+  /* ensure top content is not hidden under fixed navbar */
+  .homepage { padding-top:84px }
+}
+
+@media (max-width: 480px) {
+  .navbar { flex-direction:column; align-items:flex-start }
+  .navbar nav { display:flex; flex-direction:column; gap:8px; margin-top:8px }
+
+  .hero-section { padding:110px 12px 56px }
+  .hero-section h1 { font-size:28px }
+  .hero-section p { font-size:15px }
+
+  .tournament-grid { grid-template-columns:1fr }
+  .btn { padding:8px 12px; font-size:14px }
+}

@@ -45,11 +45,11 @@ export default function Tournaments(){
               ) : (
                 <>
                   <Link to={`/login?next=/tournament/${t.id}`} className="btn small violet">
-                    Sign In
-                  </Link>
-                  <Link to={`/register?next=/tournament/${t.id}`} className="btn small outline" style={{marginLeft:8}}>
-                    Sign Up
-                  </Link>
+                      Sign In
+                    </Link>
+                    <Link to={`/`} className="btn small outline" style={{marginLeft:8}}>
+                      Sign Up
+                    </Link>
                 </>
               )}
             </div>

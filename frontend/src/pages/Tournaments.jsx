@@ -21,10 +21,10 @@ export default function Tournaments(){
             {user ? (
               <Link to={`/tournament/${t.id}`} className="btn primary">JOIN NOW</Link>
             ) : (
-              <div style={{display:'flex',gap:8}}>
-                <Link to={`/login?next=/tournament/${t.id}`} className="btn primary">Sign In</Link>
-                <Link to={`/login?next=/tournament/${t.id}&mode=signup`} className="btn">Sign Up</Link>
-              </div>
+                 <div style={{display:'flex',gap:8}}>
+                 <Link to={`/`} className="btn primary">Sign In</Link>
+                 <Link to={`/`} className="btn">Sign Up</Link>
+               </div>
             )}
           </div>
         ))}
