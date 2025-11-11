@@ -74,7 +74,18 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+          <section>
+            <footer className="footer">
+        <p>© 2025 ValorX. All rights reserved.</p>
+        <p>Designed by Team MU Tech💌</p>
+        <div className="social-links">
+          <a href="#" aria-label="Facebook"></a>
+          <a href="#" aria-label="Youtube">TW</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          
+        </div>
+      </footer>
+          </section>
       <AuthModal open={authOpen} mode={authMode} next={authNext} onClose={()=>setAuthOpen(false)} />
 
     </div>
